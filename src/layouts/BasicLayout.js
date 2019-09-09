@@ -6,8 +6,6 @@ import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
-// import styles from './BasicLayout.scss';
-
 class BasicLayout extends React.Component {
   state = {
     collapsed: false,
@@ -23,18 +21,14 @@ class BasicLayout extends React.Component {
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
             <Menu.Item key="1">
-              <Icon type="pie-chart" />
+              <Icon type="appstore" theme="filled" />
               <span>首页</span>
             </Menu.Item>
-            {/* <Menu.Item key="2">
-              <Icon type="desktop" />
-              <span>数据管理</span>
-            </Menu.Item> */}
             <SubMenu
               key="sub1"
               title={
                 <span>
-                  <Icon type="user" />
+                  <Icon type="file" theme="filled" />
                   <span>数据管理</span>
                 </span>
               }
@@ -49,7 +43,7 @@ class BasicLayout extends React.Component {
               key="sub2"
               title={
                 <span>
-                  <Icon type="team" />
+                  <Icon type="plus" />
                   <span>添加数据</span>
                 </span>
               }
@@ -61,7 +55,7 @@ class BasicLayout extends React.Component {
               key="sub3"
               title={
                 <span>
-                  <Icon type="team" />
+                  <Icon type="star" theme="filled" />
                   <span>图表</span>
                 </span>
               }
@@ -72,7 +66,7 @@ class BasicLayout extends React.Component {
               key="sub4"
               title={
                 <span>
-                  <Icon type="team" />
+                  <Icon type="edit" theme="filled" />
                   <span>编辑</span>
                 </span>
               }
@@ -83,7 +77,7 @@ class BasicLayout extends React.Component {
               key="sub5"
               title={
                 <span>
-                  <Icon type="team" />
+                  <Icon type="setting" theme="filled" />
                   <span>设置</span>
                 </span>
               }
@@ -91,7 +85,7 @@ class BasicLayout extends React.Component {
               <Menu.Item key="11">管理员设置</Menu.Item>
             </SubMenu>
             <Menu.Item key="12">
-              <Icon type="file" />
+              <Icon type="exclamation-circle" theme="filled" />
               <span>说明</span>
             </Menu.Item>
           </Menu>

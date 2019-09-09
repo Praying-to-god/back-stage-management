@@ -1,5 +1,6 @@
 /**
  * Routes:
+ *  - ./src/routes/Limits.js
  *  - ./src/layouts/BasicLayout.js
  */
 import styles from './index.css';

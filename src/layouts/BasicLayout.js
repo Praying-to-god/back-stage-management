@@ -1,5 +1,9 @@
 // 基本页面布局，后台首页需要使用。包含公用的头部、左侧等组件
 import React from 'react';
+import { connect } from 'dva';
+
+// 引入菜单栏组件
+import XhMenu from './components/XhMenu';
 
 // antd Layout
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
@@ -19,76 +23,7 @@ class BasicLayout extends React.Component {
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
           <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1">
-              <Icon type="appstore" theme="filled" />
-              <span>首页</span>
-            </Menu.Item>
-            <SubMenu
-              key="sub1"
-              title={
-                <span>
-                  <Icon type="file" theme="filled" />
-                  <span>数据管理</span>
-                </span>
-              }
-            >
-              <Menu.Item key="2">用户列表</Menu.Item>
-              <Menu.Item key="3">商家列表</Menu.Item>
-              <Menu.Item key="4">食品列表</Menu.Item>
-              <Menu.Item key="5">订单列表</Menu.Item>
-              <Menu.Item key="6">管理员列表</Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key="sub2"
-              title={
-                <span>
-                  <Icon type="plus" />
-                  <span>添加数据</span>
-                </span>
-              }
-            >
-              <Menu.Item key="7">添加商铺</Menu.Item>
-              <Menu.Item key="8">添加商品</Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key="sub3"
-              title={
-                <span>
-                  <Icon type="star" theme="filled" />
-                  <span>图表</span>
-                </span>
-              }
-            >
-              <Menu.Item key="9">用户分布</Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key="sub4"
-              title={
-                <span>
-                  <Icon type="edit" theme="filled" />
-                  <span>编辑</span>
-                </span>
-              }
-            >
-              <Menu.Item key="10">文本编辑</Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key="sub5"
-              title={
-                <span>
-                  <Icon type="setting" theme="filled" />
-                  <span>设置</span>
-                </span>
-              }
-            >
-              <Menu.Item key="11">管理员设置</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="12">
-              <Icon type="exclamation-circle" theme="filled" />
-              <span>说明</span>
-            </Menu.Item>
-          </Menu>
+          <XhMenu match={this.props.match} />
         </Sider>
         <Layout>
           <Header
@@ -125,4 +60,9 @@ class BasicLayout extends React.Component {
   }
 }
 
-export default BasicLayout;
+export default connect(
+  ({ global }) => ({
+    menus: global.menus,
+  }),
+  null,
+)(BasicLayout);

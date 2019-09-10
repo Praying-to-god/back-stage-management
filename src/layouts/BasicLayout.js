@@ -4,11 +4,12 @@ import { connect } from 'dva';
 
 // 引入菜单栏组件
 import XhMenu from './components/XhMenu';
+// 引入面包屑组件
+import HeaderLeft from './components/HeaderLeft';
 
 // antd Layout
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+import { Layout } from 'antd';
+const { Header, Content, Sider } = Layout;
 
 class BasicLayout extends React.Component {
   state = {
@@ -37,10 +38,7 @@ class BasicLayout extends React.Component {
             }}
           >
             {' '}
-            <Breadcrumb style={{ marginLeft: '20px' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
+            <HeaderLeft match={this.props.match} />
             <div style={{ marginRight: '20px' }}>
               <img
                 src="//elm.cangdu.org/img/default.jpg"

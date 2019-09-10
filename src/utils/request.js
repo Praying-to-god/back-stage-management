@@ -23,13 +23,6 @@ request.interceptors.request.use(
 // 响应拦截
 request.interceptors.response.use(
   response => {
-    // 统一做错误提示
-    let result = response.data;
-    if (result.code !== 0) {
-      message.error(result.msg);
-      // 直接调用 reject 让后续流程不再继续
-      return Promise.reject(result.msg);
-    }
     return response.data;
   },
   error => {

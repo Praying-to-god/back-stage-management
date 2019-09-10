@@ -1,4 +1,5 @@
 export default {
+  namespaced: 'global',
   state: {
     menus: [
       { id: '1-1', icon: 'appstore', theme: 'filled', name: '首页', href: '/', bread: '' },

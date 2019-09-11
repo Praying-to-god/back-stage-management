@@ -1,0 +1,27 @@
+body {
+  background-color: #324057;
+  h1 {
+    text-align: center;
+    font-size: 38px;
+    color: #fff;
+    position: relative;
+    top: 80px;
+    letter-spacing: 10px;
+    font-family: '宋体';
+  }
+}
+.login_form {
+  max-width: 370px;
+  margin: 100px auto;
+  border-radius: 10px;
+  padding: 20px;
+
+  background-color: #fff;
+  p {
+    color: gray;
+    text-align: center;
+  }
+}
+.login_form_button {
+  width: 100%;
+}

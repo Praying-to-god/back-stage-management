@@ -32,7 +32,6 @@ export default {
           limit: action.pageSize || 10,
         },
       });
-      console.log(result);
       yield put({
         type: 'setUserList',
         userList: result,

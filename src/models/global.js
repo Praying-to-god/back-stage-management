@@ -1,3 +1,9 @@
+import request from '../utils/request';
+import { message } from 'antd';
+
+// 取出本地存储的用户信息
+const userData = window.sessionStorage.getItem('user');
+
 export default {
   namespaced: 'global',
   state: {
@@ -71,5 +77,41 @@ export default {
         bread: '说明/',
       },
     ],
+
+    // 当前登录的用户个人信息，判断用户是否登录
+    user: userData ? JSON.parse(userData) : null,
+  },
+
+  reducers: {
+    login(state, action) {
+      return {
+        ...state,
+        ...{
+          user: action.user,
+        },
+      };
+    },
+  },
+
+  effects: {
+    *loginSync(action, { put }) {
+      // 登录请求
+      const result = yield request.post('/admin/login', action.payload);
+      // 请求都会成功 用状态码来判断是否匹配 真正登录
+      if (result.status !== 1) {
+        message.error(result.message);
+      } else {
+        // 状态码为1时 真正登录 调用 reducers/login
+        message.success('登录成功');
+        yield put({
+          type: 'login',
+          user: action.payload.user_name,
+        });
+        // 本地存储 用户信息 防止刷新时 仓库数据重新开始 登录信息被清空
+        window.sessionStorage.setItem('user', JSON.stringify(action.payload.user_name));
+        // 跳转至首页
+        action.history.replace('/');
+      }
+    },
   },
 };
